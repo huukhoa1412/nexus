@@ -5,12 +5,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    volumes:
-      - ./data:/root/.nexus
+#    volumes:
+#      - ./data:/root/.nexus
     stdin_open: true # Keep the container open for interactive input
     tty: true        # Enable TTY for interactive prompts
     environment:
       - NONINTERACTIVE=0
       - PROVER_ID=4abv6FRd
-    working_dir: /app
-    restart: always
+    # working_dir: /app
+    #restart: always
+    deploy:
+      replicas: 3     # Run a cluster of 5 instances
+      restart_policy:
+        condition: on-failure

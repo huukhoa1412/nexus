@@ -12,13 +12,22 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
-WORKDIR /app
+# EXPORT REPO_PATH=$NEXUS_HOME/network-api
 
-# Copy the run script into the container
-COPY run.sh /app/run.sh
+WORKDIR /root/.nexus/
+# Clone the repository
+RUN git clone https://github.com/nexus-xyz/network-api
 
-# Ensure the script is executable
-RUN chmod +x /app/run.sh
+# Change the working directory to the cloned repository
+WORKDIR /root/.nexus/network-api 
+RUN git -c advice.detachedHead=false checkout $(git rev-list --tags --max-count=1)
 
-# Default command to execute the script
-CMD ["./run.sh"]
+# /clients/cli
+WORKDIR /root/.nexus/network-api/clients/cli
+# Build the project
+RUN cargo build --release
+WORKDIR /root/
+COPY ./run.sh ./run.sh
+RUN chmod +x run.sh
+# Run the application
+CMD ["/root/run.sh"]

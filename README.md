@@ -11,11 +11,11 @@ This project uses Docker Compose to set up and run the necessary services. Pleas
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/huukhoa1412/nexus
-    cd nexus
+    git clone <repository-url>
+    cd <repository-directory>
     ```
 
-2. Open the `docker-compose.yml` file and fill in the `PROVER_ID` environment variable with your specific ID. You can obtain your `PROVER_ID` by accessing [Nexus](https://beta.nexus.xyz/).
+2. Open the `docker compose.yml` file and fill in the `PROVER_ID` environment variable with your specific ID. You can obtain your `PROVER_ID` by accessing [Nexus](https://beta.nexus.xyz/).
 
     ```yaml
     version: '3.8'
@@ -25,13 +25,13 @@ This project uses Docker Compose to set up and run the necessary services. Pleas
           - PROVER_ID=<your-prover-id>
     ```
 
-3. Save the changes to the `docker-compose.yml` file.
+3. Save the changes to the `docker compose.yml` file.
 
 ## Running the Application
 
 1. Build and start the services:
     ```sh
-    docker-compose up --build
+    docker compose up --build
     ```
 
 
@@ -39,9 +39,17 @@ This project uses Docker Compose to set up and run the necessary services. Pleas
 
 To stop the services, run:
 ```sh
-docker-compose down
+docker compose down
 ```
 
 ## Troubleshooting
 
 If you encounter any issues, please refer to the documentation or open an issue on the repository.
+
+
+## Scaling the Application
+
+To scale the `nexus-prover` service to 5 instances, run:
+```sh
+docker compose up -d --scale nexus-prover=5
+```
