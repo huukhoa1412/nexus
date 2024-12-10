@@ -11,8 +11,8 @@ This project uses Docker Compose to set up and run the necessary services. Pleas
 
 1. Clone the repository:
     ```sh
-    git clone <repository-url>
-    cd <repository-directory>
+    git clone https://github.com/huukhoa1412/nexus
+    cd nexus
     ```
 
 2. Open the `docker-compose.yml` file and fill in the `PROVER_ID` environment variable with your specific ID. You can obtain your `PROVER_ID` by accessing [Nexus](https://beta.nexus.xyz/).
