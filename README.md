@@ -11,7 +11,7 @@ This project uses Docker Compose to set up and run the necessary services. Pleas
 
 1. Clone the repository:
     ```sh
-    git clone github.com/huukhoa1412/nexus
+    git clone https://github.com/huukhoa1412/nexus
     cd nexus
     ```
 
