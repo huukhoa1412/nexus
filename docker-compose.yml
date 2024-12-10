@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  nexus-prover:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/root/.nexus
+    stdin_open: true # Keep the container open for interactive input
+    tty: true        # Enable TTY for interactive prompts
+    environment:
+      - NONINTERACTIVE=0
+      - PROVER_ID=4abv6FRd
+    working_dir: /app
+    restart: always
